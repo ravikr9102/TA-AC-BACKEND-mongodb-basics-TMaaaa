@@ -1,7 +1,7 @@
 writeCode
 
 #### Import data from json file to mongodb database using `mongoimport`
-
+//  .
 ```
 mongoimport --host <host_name> --username <user_name> --password <password> --db
 DB_NAME --collection COLLECTION_NAME --file cities.json(file location) --jsonArray
