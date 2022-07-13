@@ -1,9 +1,12 @@
 
 // 1. Create a database named `blog`.
 // 2. Create a collection called 'articles'.
- // use blog
+
+// use blog
 db.createCollection('articles');
+
 // 3. Insert multiple documents(at least 3) into articles. It should have fields
+
 db.articles.insertMany( [
     {
         id : 1,
@@ -40,29 +43,48 @@ db.articles.insertMany( [
       }
 ]);
 // 4. Find all the articles using `db.COLLECTION_NAME.find()`
-db.articles.find().pretty();
+
+db.articles.find({}).pretty();
+
 // find By using a specific id 
+
 db.articles.find({id : 1}).pretty()
+
 // find a document by using the title only 
+
 db.articles.find({title :'C mother of all language'});
+
 // find by  using  the author name   
+
 db.articles.find({'author.name': 'Rahul Mandyal'}).pretty();
+
 // finding by using a specific tag 
+
 db.articles.find({tags : {$all: ['machinelearning']}}).pretty();
+
 // 9. Update title of a document using its \_id field.
+
 db.articles.update({id : 1},{$set:{title : 'learn how to earn by internet'}});
+
 // 10. Update a author's name using article's title.
+
 db.articles.update({title :'C mother of all language'},{$set:{'author.name' : 'Rakesh Mandyal'}});
 
 // 11. rename details field to description from all articles in articles collection.
+
 db.articles.updateMany({} ,{$rename :{'details' : 'description'}});
 
 
 // 12. Add additional tag in a specific document.
+
 db.articles.update({id : 1}, {$push:{tags: 'internet tricks'}});
+
 // 13. Update an article's title using $set and without $set.
+
 db.articles.update({id : 2},{$set:{title : 'learn c or c++ the mother of all languages'}});
+
 db.articles.update({id : 3}, {title : 'Master Data science '})
+
 // Difference Between both of them 
 //  By using $set 
 // if we use $set then it will updates  only a  specific part  rest of the document is not erased or there wil be no affect on the other key value pairs  it will updates only that specific key 
